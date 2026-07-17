@@ -1,2 +1,2 @@
 # webcustom
-lmao
+đây la web tin tức tối giản 
