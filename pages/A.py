@@ -4,6 +4,7 @@ import webbrowser
 
 # 1. Cấu hình trang
 st.set_page_config(page_title="VnExpress News", layout="wide")
+st.markdown('<div id="top"></div>', unsafe_allow_html=True)
 
 # --- DANH SÁCH RSS URL CỦA VNEXPRESS ---
 RSS_FEEDS = {
@@ -58,6 +59,13 @@ def get_articles_from_rss(feed_url, keyword=""):
 
 # 3. Giao diện Bộ lọc ở Sidebar
 with st.sidebar:
+    st.markdown(
+        "<div style='text-align:center; margin-bottom: 10px;'>"
+        "<a href='#top' style='display:block; width:100%; padding:8px 0; background:#f0f2f6; border-radius:8px; text-decoration:none; color:#000; font-weight:600;'>🔼 Quay lại đầu trang</a>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+    st.write("---")
     st.header("🔍 Bộ lọc tin")
     selected_category_name = st.selectbox("Chọn chuyên mục", list(RSS_FEEDS.keys()))
     selected_url = RSS_FEEDS[selected_category_name]
@@ -80,16 +88,14 @@ col_main, col_spacer, col_right = st.columns([5, 1, 2])
 with col_spacer:
     st.write("")
 
-# --- CỘT PHẢI (STICKY - LƠ LỬNG) ---
+
 with col_right:
     # CSS Sticky ở trên sẽ giữ cột này lơ lửng cố định khi cuộn chuột
     with st.container(border=True):
         st.write("")
         st.write("📂 Chuyên mục")
         st.write("---")
-        if st.button("Quay lại lên đầu trang"):
-            st.markdown("<script>window.scrollTo(0, 0);</script>", unsafe_allow_html=True)
-        st.write("---")
+        
         
         for cat in RSS_FEEDS.keys():
             st.write(f"- {cat}")
