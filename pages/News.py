@@ -94,7 +94,7 @@ st.markdown("""
     /* Secondary Button Style (Quick Summary) */
     .stButton > button[data-testid="baseButton-secondary"] {
         background-color: #2D2D2D !important;
-        color: #FFFFFF !important;
+        color: #000 !important;
         border: 1px solid #404040 !important;
     }
     .stButton > button[data-testid="baseButton-secondary"]:hover {
